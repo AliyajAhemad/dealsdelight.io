@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deals Delight</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .card {
+            margin: 20px 0;
+        }
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .card-footer .fas {
+            margin-right: 5px;
+        }
+        .no-results {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .no-results svg {
+            width: 100px;
+            height: 100px;
+            fill: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Deals Delight</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group">
+                    <input class="form-control" id="search-input" type="search" placeholder="Search for products" aria-label="Search">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="container">
+        <div class="row" id="product-list">
+            <!-- Products will be injected here by JavaScript -->
+        </div>
+        <div class="no-results" id="no-results" style="display: none;">
+            <!-- SVG Illustration for No Results -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM7.293 15.293l-2.293-2.293 1.414-1.414 2.293 2.293 5.293-5.293 1.414 1.414-6.707 6.707-7.414-7.414 1.414-1.414zm11.414-6.293l-1.414-1.414 1.707-1.707 1.414 1.414-1.707 1.707z"/>
+            </svg>
+            <p>No products found.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="footer-social-icons mb-3">
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://telegram.me/" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <span class="text-muted">&copy; 2024 Deals Delight. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Example products data
+        const products = [
+            {
+                imgSrc: 'https://via.placeholder.com/150',
+                title: 'Orbit 58023N Lawn Sprinkler, neutral',
+                price: '$3.59',
+                originalPrice: '$8',
+                source: 'Amazon',
+                sourceIcon: 'fab fa-amazon'
+            },
+            {
+                imgSrc: 'https://via.placeholder.com/150',
+                title: 'Hisense 85" Class A6 Series LED 4K UHD Smart Google TV 85A6N',
+                price: '$849.99',
+                originalPrice: '$1000',
+                source: 'Amazon',
+                sourceIcon: 'fab fa-amazon'
+            }
+            // Add more products as needed
+        ];
+
+        // Function to render product cards
+        function renderProductCards(products) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+
+            if (products.length === 0) {
+                document.getElementById('no-results').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('no-results').style.display = 'none';
+            }
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'col-md-3';
+
+                productCard.innerHTML = `
+                    <div class="card">
+                        <img src="${product.imgSrc}" class="card-img-top" alt="${product.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.title}</h5>
+                            <p class="card-text price">${product.price} <span class="original-price">${product.originalPrice}</span></p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <i class="${product.sourceIcon}"></i> ${product.source}
+                        </div>
+                    </div>
+                `;
+
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Render products on page load
+        document.addEventListener('DOMContentLoaded', () => renderProductCards(products));
+
+        // Search functionality (basic example)
+        document.getElementById('search-input').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filteredProducts = products.filter(product => product.title.toLowerCase().includes(query));
+            renderProductCards(filteredProducts);
+        });
+    </script>
+</body>
+</html>
