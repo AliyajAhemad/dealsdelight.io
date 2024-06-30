@@ -1,13 +1,12 @@
 body {
     padding-top: 56px;
 }
-
+/* 
 .product-card {
     margin-bottom: 20px;
 }
 
 .card-img-top {
-    /* max-width: 100px; */
     margin: 0 auto;
 }
 
@@ -23,7 +22,7 @@ body {
 .card-text {
     font-size: 0.9rem;
     margin-bottom: 10px;
-}
+} */
 
 .footer {
     background-color: #343a40; /* Dark background for footer */
@@ -59,3 +58,149 @@ body {
     fill: #ccc; /* Adjust color as per your design */
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amita&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    -webkit-user-select: none; 
+}
+
+.carousel
+{
+	padding:5px;
+	width: 100%;
+	overflow: scroll;
+	position: relative;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
+
+.carousel-item {
+    width: 230px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle and light box shadow */
+}
+
+.carousel-item .info
+{
+	text-align: center;
+	line-height: 20px;
+	margin-top: -10px;
+	font-family: 'Amita', cursive;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 5px;
+	font-family: "Arial", Helvetica, sans-serif;
+    text-align: left;
+}
+
+.info p {
+    margin: 0;
+    max-height: 5.6em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4em; 
+    margin-bottom: 10px; 
+}
+
+.carousel-item .info h3
+{
+	color: #333;
+	font-family: 'Roboto Slab',serif;
+	font-size: 10px;
+}
+
+.price {
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 16px; 
+    color: #333; 
+}
+
+.price .discounted-price {
+    font-weight: bold; 
+    color: rgba(0, 0, 0, 0.801); 
+}
+
+.price .actual-price {
+    text-decoration: line-through; 
+    color: rgb(245, 69, 69); 
+	font-size: 10px;
+}
+
+.price .actual-price:before {
+    content: "₹"; 
+}
+
+.price .discounted-price:before {
+    content: "₹"; 
+}
+
+.button-container {
+	border-top:1px solid rgba(0, 0, 0, 0.1);
+	padding-top: 15px;
+    text-align: center; 
+}
+
+button {
+    background-color: transparent; 
+    color: black; 
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px; 
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.03); 
+}
+
+
+.carousel-item .info .stars
+{
+	margin-top: -20px;
+}
+
+.carousel-item .info .stars i
+{
+	color: gold;
+	padding: 10px 0;
+}
+.carousel-item .info .price
+{
+	font-size: 13px;
+	color: #fd5c63;
+	letter-spacing: 0.5px;
+}
+
+
+.carousel-item__img
+{
+	width: 100%;
+	height: 210px;
+	border-radius: 5px;
+	box-shadow: 0 0.5px 0.5px 0 rgba(0,0,0,0.26);
+}
+.carousel::-webkit-scrollbar
+{
+	height: 5px;
+}
+.carousel::-webkit-scrollbar-track
+{
+	display: none;
+}
